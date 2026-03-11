@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FadeIn from '../components/FadeIn';
+import HeroSlideshow from '../components/HeroSlideshow';
 import ProjectGrid from '../components/ProjectGrid';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import { services } from '../data/services';
@@ -9,12 +10,8 @@ import { services } from '../data/services';
 <BaseLayout title="Home" navVariant="dark">
   <!-- Hero Section — Full-bleed editorial photography -->
   <section class="relative min-h-screen flex items-end pb-20 md:pb-28 bg-charcoal overflow-hidden">
-    <!-- Hero background image -->
-    <img
-      src="/images/projects/new-builds/modern-timber-dark-render-01.jpg"
-      alt="Modern timber and render home by Captain Construction"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
+    <!-- Hero background slideshow -->
+    <HeroSlideshow client:load />
     <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
