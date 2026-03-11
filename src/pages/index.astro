@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FadeIn from '../components/FadeIn';
+import TestimonialCarousel from '../components/TestimonialCarousel';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
 
 const featured = projects.filter((p) => p.featured).slice(0, 4);
-const testimonial = testimonials[2]; // James T — the strongest one
 ---
 
 <BaseLayout title="Home" navVariant="dark">
@@ -186,23 +186,10 @@ const testimonial = testimonials[2]; // James T — the strongest one
     </div>
   </section>
 
-  <!-- Testimonial — Single, powerful -->
+  <!-- Testimonials — Rotating carousel -->
   <section class="py-24 md:py-40 bg-stone">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <FadeIn client:load>
-        <p class="font-heading text-6xl md:text-7xl text-accent/30 leading-none mb-8">&ldquo;</p>
-        <blockquote class="font-heading text-2xl md:text-3xl lg:text-4xl text-dark leading-snug tracking-tight mb-10">
-          {testimonial.quote}
-        </blockquote>
-        <div>
-          <p class="font-body text-[11px] font-medium tracking-[0.15em] text-accent uppercase">
-            {testimonial.author}
-          </p>
-          <p class="text-muted text-sm mt-1">
-            {testimonial.location} — {testimonial.project}
-          </p>
-        </div>
-      </FadeIn>
+      <TestimonialCarousel client:load testimonials={testimonials} />
     </div>
   </section>
 
