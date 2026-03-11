@@ -1,29 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FadeIn from '../components/FadeIn';
-import TextReveal from '../components/TextReveal';
-import ParallaxImage from '../components/ParallaxImage';
-import AnimatedCounter from '../components/AnimatedCounter';
-import StaggerChildren, { StaggerItem } from '../components/StaggerChildren';
 ---
 
 <BaseLayout title="About" description="Learn about Captain Construction Co. — Geelong's premium residential builder." navVariant="dark">
-  <!-- Hero — Asymmetric -->
-  <section class="relative bg-charcoal pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+  <!-- Hero -->
+  <section class="relative bg-dark pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
     <img src="/images/heroes/hero-staircase.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30" />
-    <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-charcoal/60 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6">
       <div class="max-w-2xl">
-        <FadeIn client:load direction="none">
-          <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">About Us</p>
-        </FadeIn>
-        <TextReveal client:load delay={0.2}>
-          <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl text-cream tracking-tight">
+        <FadeIn client:load>
+          <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">About Us</p>
+          <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl text-parchment tracking-tight">
             Built on trust
           </h1>
-        </TextReveal>
-        <FadeIn client:load delay={0.6} direction="up">
-          <p class="text-cream/45 text-lg max-w-lg mt-6">
+          <p class="text-parchment/45 text-lg max-w-lg mt-6">
             Geelong born. Quality driven. Built on a reputation of craftsmanship and trust.
           </p>
         </FadeIn>
@@ -32,19 +24,19 @@ import StaggerChildren, { StaggerItem } from '../components/StaggerChildren';
   </section>
 
   <!-- Story — Asymmetric layout -->
-  <section class="py-24 md:py-36 bg-warm-white overflow-hidden">
+  <section class="py-24 md:py-36 bg-parchment">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
         <div class="lg:col-span-5">
-          <FadeIn client:load direction="left">
-            <ParallaxImage client:load src="/images/projects/new-builds/modern-timber-dark-render-01.jpg" alt="Modern timber build" className="aspect-[3/4] rounded-2xl" />
+          <FadeIn client:load>
+            <img src="/images/projects/new-builds/modern-timber-dark-render-01.jpg" alt="Modern timber build" class="aspect-[3/4] w-full object-cover" />
           </FadeIn>
         </div>
         <div class="lg:col-span-6 lg:col-start-7 lg:pt-16">
-          <FadeIn client:load direction="right" delay={0.2}>
-            <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">Our Story</p>
-            <h2 class="font-heading text-4xl md:text-5xl text-charcoal tracking-tight mb-8">Why Captain?</h2>
-            <div class="space-y-6 text-text-secondary leading-relaxed">
+          <FadeIn client:load delay={0.15}>
+            <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">Our Story</p>
+            <h2 class="font-heading text-4xl md:text-5xl text-dark tracking-tight mb-8">Why Captain?</h2>
+            <div class="space-y-6 text-muted leading-relaxed">
               <p>
                 Captain Construction Co. was founded with a simple belief: every home deserves to be built by someone who genuinely cares about the outcome. Not just getting the job done — but getting it right.
               </p>
@@ -61,29 +53,29 @@ import StaggerChildren, { StaggerItem } from '../components/StaggerChildren';
     </div>
   </section>
 
-  <!-- What Sets Us Apart — Card layout with texture -->
-  <section class="py-24 md:py-36 gradient-warm noise-overlay">
-    <div class="relative z-10 max-w-5xl mx-auto px-6">
+  <!-- What Sets Us Apart -->
+  <section class="py-24 md:py-36 bg-stone">
+    <div class="max-w-5xl mx-auto px-6">
       <FadeIn client:load>
         <div class="text-center mb-16">
-          <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">The Difference</p>
-          <h2 class="font-heading text-4xl md:text-6xl text-charcoal tracking-tight">What sets us apart</h2>
+          <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">The Difference</p>
+          <h2 class="font-heading text-4xl md:text-6xl text-dark tracking-tight">What sets us apart</h2>
         </div>
       </FadeIn>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <FadeIn client:load delay={0}>
-          <div class="p-8 md:p-10 bg-charcoal rounded-2xl">
-            <h3 class="font-body text-xs font-medium tracking-[0.15em] text-brass uppercase mb-4">Not a Volume Builder</h3>
-            <p class="text-cream/60 text-sm leading-relaxed">
+          <div class="p-8 md:p-10 bg-dark">
+            <h3 class="font-body text-xs font-medium tracking-[0.15em] text-accent uppercase mb-4">Not a Volume Builder</h3>
+            <p class="text-parchment/60 text-sm leading-relaxed">
               We take on a limited number of projects at any given time so that every build gets the focus it deserves. That means direct communication with Cal, not a project manager you've never met.
             </p>
           </div>
         </FadeIn>
         <FadeIn client:load delay={0.1}>
-          <div class="p-8 md:p-10 bg-stone-light rounded-2xl">
-            <h3 class="font-body text-xs font-medium tracking-[0.15em] text-brass-muted uppercase mb-4">Timber Craftsmanship</h3>
-            <p class="text-text-secondary text-sm leading-relaxed">
+          <div class="p-8 md:p-10 bg-parchment">
+            <h3 class="font-body text-xs font-medium tracking-[0.15em] text-accent uppercase mb-4">Timber Craftsmanship</h3>
+            <p class="text-muted text-sm leading-relaxed">
               Natural timber cladding, hardwood decking, bespoke joinery, and finishing touches that elevate a build from good to exceptional. It's the work most people don't notice until they see it done properly.
             </p>
           </div>
@@ -93,66 +85,66 @@ import StaggerChildren, { StaggerItem } from '../components/StaggerChildren';
   </section>
 
   <!-- Service Areas -->
-  <section class="py-24 md:py-36 gradient-dark noise-overlay">
-    <div class="relative z-10 max-w-7xl mx-auto px-6">
+  <section class="py-24 md:py-36 bg-dark">
+    <div class="max-w-7xl mx-auto px-6">
       <FadeIn client:load>
         <div class="text-center mb-16">
-          <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">Where We Build</p>
-          <h2 class="font-heading text-4xl md:text-6xl text-cream tracking-tight">Service Areas</h2>
+          <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">Where We Build</p>
+          <h2 class="font-heading text-4xl md:text-6xl text-parchment tracking-tight">Service Areas</h2>
         </div>
       </FadeIn>
 
-      <StaggerChildren client:load className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto" staggerDelay={0.06}>
-        {['Geelong', 'Bellarine Peninsula', 'Surf Coast', 'Golden Plains', 'Barwon Heads', 'Ocean Grove', 'Torquay', 'Greater Region'].map((area) => (
-          <StaggerItem client:load>
-            <div class="text-center py-4 px-2 rounded-xl border border-cream/8 hover:border-brass/30 transition-colors">
-              <p class="font-body text-sm text-cream/70">{area}</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        {['Geelong', 'Bellarine Peninsula', 'Surf Coast', 'Golden Plains', 'Barwon Heads', 'Ocean Grove', 'Torquay', 'Greater Region'].map((area, i) => (
+          <FadeIn client:load delay={i * 0.05}>
+            <div class="text-center py-4 px-2 border border-parchment/8 hover:border-accent/30 transition-colors">
+              <p class="font-body text-sm text-parchment/70">{area}</p>
             </div>
-          </StaggerItem>
+          </FadeIn>
         ))}
-      </StaggerChildren>
+      </div>
     </div>
   </section>
 
   <!-- Values -->
-  <section class="py-24 md:py-36 bg-warm-white">
+  <section class="py-24 md:py-36 bg-parchment">
     <div class="max-w-5xl mx-auto px-6">
       <FadeIn client:load>
         <div class="text-center mb-16">
-          <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">Our Values</p>
-          <h2 class="font-heading text-4xl md:text-6xl text-charcoal tracking-tight">How we work</h2>
+          <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">Our Values</p>
+          <h2 class="font-heading text-4xl md:text-6xl text-dark tracking-tight">How we work</h2>
         </div>
       </FadeIn>
 
-      <StaggerChildren client:load className="grid grid-cols-1 md:grid-cols-3 gap-5" staggerDelay={0.1}>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[
           { num: '01', title: 'Quality First', desc: "We don't cut corners. Every material is selected for durability and every joint is built to last." },
           { num: '02', title: 'Clear Communication', desc: "You'll always know where your project stands. Regular updates, honest timelines, and no surprises." },
           { num: '03', title: 'Personal Touch', desc: "You deal directly with Cal — the person who built the business and leads every project." },
-        ].map((item) => (
-          <StaggerItem client:load>
-            <div class="text-center p-8 md:p-10 bg-stone-light rounded-2xl">
-              <span class="font-heading text-4xl text-brass/25 block mb-4">{item.num}</span>
-              <h3 class="font-body text-xs font-medium tracking-[0.15em] uppercase mb-4 text-charcoal">{item.title}</h3>
-              <p class="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
+        ].map((item, i) => (
+          <FadeIn client:load delay={i * 0.1}>
+            <div class="text-center p-8 md:p-10 bg-stone">
+              <span class="font-heading text-4xl text-accent/25 block mb-4">{item.num}</span>
+              <h3 class="font-body text-xs font-medium tracking-[0.15em] uppercase mb-4 text-dark">{item.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{item.desc}</p>
             </div>
-          </StaggerItem>
+          </FadeIn>
         ))}
-      </StaggerChildren>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-28 md:py-40 gradient-dark noise-overlay">
-    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+  <section class="py-28 md:py-44 bg-dark border-t border-parchment/5">
+    <div class="max-w-4xl mx-auto px-6 text-center">
       <FadeIn client:load>
-        <h2 class="font-heading text-4xl md:text-7xl text-cream tracking-tight mb-6">
-          Let's talk about<br /><span class="italic text-brass">your project</span>
+        <h2 class="font-heading text-4xl md:text-7xl text-parchment tracking-tight mb-6">
+          Let's talk about<br /><em class="text-accent">your project</em>
         </h2>
-        <p class="text-cream/40 text-lg mb-10 max-w-xl mx-auto">
+        <p class="text-parchment/40 text-lg mb-10 max-w-xl mx-auto">
           Ready to build something exceptional? Get in touch for a no-obligation consultation.
         </p>
-        <a href="/contact" class="inline-block px-10 py-4 bg-brass text-warm-white font-body text-sm tracking-wide rounded-full hover:bg-brass-light transition-colors duration-300">
+        <a href="/contact" class="inline-block px-10 py-4 bg-accent text-parchment font-body text-sm tracking-wide rounded-full hover:opacity-90 transition-opacity">
           Contact Us
         </a>
       </FadeIn>

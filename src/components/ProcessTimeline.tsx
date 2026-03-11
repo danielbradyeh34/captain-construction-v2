@@ -37,34 +37,34 @@ function Step({ step, index, variant = 'dark' }: { step: typeof steps[0]; index:
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 }}
       className="relative flex items-start gap-8 md:gap-12"
     >
-      <div className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl ${
-        isLight ? 'bg-stone-light' : 'bg-cream/5'
+      <div className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center ${
+        isLight ? 'bg-stone' : 'bg-parchment/5'
       }`}>
-        <span className="font-heading text-2xl md:text-3xl text-brass tracking-tight">
+        <span className="font-heading text-2xl md:text-3xl text-accent tracking-tight">
           {step.number}
         </span>
       </div>
 
       <div className="flex-1 pb-12 md:pb-16">
         <h3 className={`font-body text-xs font-medium tracking-[0.15em] uppercase mb-3 ${
-          isLight ? 'text-charcoal' : 'text-cream'
+          isLight ? 'text-dark' : 'text-parchment'
         }`}>
           {step.title}
         </h3>
         <p className={`leading-relaxed max-w-lg ${
-          isLight ? 'text-text-secondary' : 'text-cream/60'
+          isLight ? 'text-muted' : 'text-parchment/60'
         }`}>
           {step.description}
         </p>
       </div>
 
       {index < steps.length - 1 && (
-        <div className="absolute left-8 md:left-10 top-20 md:top-24 bottom-0 w-px bg-brass/10" />
+        <div className="absolute left-8 md:left-10 top-20 md:top-24 bottom-0 w-px bg-accent/10" />
       )}
     </motion.div>
   );

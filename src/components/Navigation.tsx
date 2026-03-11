@@ -30,32 +30,32 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
   }, [isOpen]);
 
   const isDark = variant === 'dark';
-  const showLightLogo = isOpen || (!scrolled && isDark);
+  const showLight = isOpen || (!scrolled && isDark);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-warm-white/95 backdrop-blur-md py-3'
-          : 'bg-transparent py-6'
+          ? 'bg-parchment/95 backdrop-blur-md py-3'
+          : 'bg-transparent py-5 md:py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="relative z-50 flex items-center gap-3">
           <img
-            src={showLightLogo ? '/logo-icon-light.svg' : '/logo-icon-dark.svg'}
+            src={showLight ? '/logo-icon-light.svg' : '/logo-icon-dark.svg'}
             alt=""
-            className="h-10 md:h-12 w-auto"
+            className="h-10 md:h-11 w-auto"
           />
           <div className="flex flex-col">
-            <span className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-colors duration-300 ${
-              showLightLogo ? 'text-cream' : 'text-charcoal'
+            <span className={`font-heading text-xl tracking-tight leading-tight transition-colors duration-300 ${
+              showLight ? 'text-parchment' : 'text-dark'
             }`}>
               Captain
             </span>
-            <span className={`font-body text-[9px] md:text-[10px] tracking-[0.2em] uppercase leading-tight transition-colors duration-300 ${
-              showLightLogo ? 'text-cream/50' : 'text-text-secondary'
+            <span className={`font-body text-[9px] tracking-[0.2em] uppercase leading-tight transition-colors duration-300 ${
+              showLight ? 'text-parchment/40' : 'text-muted'
             }`}>
               Construction Co.
             </span>
@@ -63,19 +63,19 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`font-body text-[13px] tracking-[0.05em] transition-colors duration-300 ${
+              className={`font-body text-[13px] tracking-[0.02em] transition-colors duration-300 ${
                 currentPath === link.href
-                  ? scrolled ? 'text-charcoal' : isDark ? 'text-warm-white' : 'text-charcoal'
+                  ? scrolled ? 'text-dark' : isDark ? 'text-parchment' : 'text-dark'
                   : scrolled
-                    ? 'text-text-secondary hover:text-charcoal'
+                    ? 'text-muted hover:text-dark'
                     : isDark
-                      ? 'text-warm-white/60 hover:text-warm-white'
-                      : 'text-text-secondary hover:text-charcoal'
+                      ? 'text-parchment/50 hover:text-parchment'
+                      : 'text-muted hover:text-dark'
               }`}
             >
               {link.label}
@@ -83,15 +83,15 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
           ))}
           <a
             href="/contact"
-            className={`ml-4 px-6 py-2.5 font-body text-[13px] tracking-[0.05em] rounded-full transition-all duration-300 ${
+            className={`ml-2 px-6 py-2.5 font-body text-[13px] tracking-[0.02em] rounded-full transition-all duration-300 ${
               scrolled
-                ? 'bg-charcoal text-warm-white hover:bg-brass'
+                ? 'bg-dark text-parchment hover:bg-accent'
                 : isDark
-                  ? 'bg-warm-white/10 backdrop-blur-sm text-warm-white border border-warm-white/20 hover:bg-warm-white hover:text-charcoal'
-                  : 'bg-charcoal text-warm-white hover:bg-brass'
+                  ? 'bg-parchment/10 backdrop-blur-sm text-parchment border border-parchment/20 hover:bg-parchment hover:text-dark'
+                  : 'bg-dark text-parchment hover:bg-accent'
             }`}
           >
-            Enquire
+            Start a Project
           </a>
         </div>
 
@@ -104,19 +104,19 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
           <motion.span
             animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
             className={`block w-7 h-px origin-center transition-colors ${
-              showLightLogo ? 'bg-cream' : 'bg-charcoal'
+              showLight ? 'bg-parchment' : 'bg-dark'
             }`}
           />
           <motion.span
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
             className={`block w-7 h-px ${
-              showLightLogo ? 'bg-cream' : 'bg-charcoal'
+              showLight ? 'bg-parchment' : 'bg-dark'
             }`}
           />
           <motion.span
             animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
             className={`block w-7 h-px origin-center transition-colors ${
-              showLightLogo ? 'bg-cream' : 'bg-charcoal'
+              showLight ? 'bg-parchment' : 'bg-dark'
             }`}
           />
         </button>
@@ -130,7 +130,7 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-charcoal z-40 flex items-center justify-center"
+            className="fixed inset-0 bg-dark z-40 flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
@@ -139,9 +139,9 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
                   href={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.06 }}
                   className={`font-heading text-4xl tracking-tight ${
-                    currentPath === link.href ? 'text-cream' : 'text-cream/40 hover:text-cream'
+                    currentPath === link.href ? 'text-parchment' : 'text-parchment/30 hover:text-parchment'
                   } transition-colors`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -152,8 +152,8 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
                 href="/contact"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-4 px-8 py-3 bg-brass text-warm-white font-body text-base rounded-full hover:bg-brass-light transition-all"
+                transition={{ delay: 0.4 }}
+                className="mt-4 px-8 py-3 bg-accent text-parchment font-body text-base rounded-full hover:opacity-90 transition-opacity"
                 onClick={() => setIsOpen(false)}
               >
                 Start a Project
@@ -162,8 +162,8 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
                 href="tel:0419400734"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="text-text-muted font-body text-lg"
+                transition={{ delay: 0.5 }}
+                className="text-muted font-body text-lg"
               >
                 0419 400 734
               </motion.a>

@@ -1,236 +1,226 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FadeIn from '../components/FadeIn';
-import TextReveal from '../components/TextReveal';
-import ParallaxImage from '../components/ParallaxImage';
-import AnimatedCounter from '../components/AnimatedCounter';
-import HorizontalScroll from '../components/HorizontalScroll';
-import StaggerChildren, { StaggerItem } from '../components/StaggerChildren';
-import HeroSlideshow from '../components/HeroSlideshow';
-import ProjectGrid from '../components/ProjectGrid';
-import TestimonialCarousel from '../components/TestimonialCarousel';
-import { services } from '../data/services';
+import { projects } from '../data/projects';
+import { testimonials } from '../data/testimonials';
+
+const featured = projects.filter((p) => p.featured).slice(0, 4);
+const testimonial = testimonials[2]; // James T — the strongest one
 ---
 
 <BaseLayout title="Home" navVariant="dark">
-  <!-- Hero — Oversized typography, cinematic -->
-  <section class="relative min-h-screen flex items-end pb-16 md:pb-24 bg-charcoal overflow-hidden">
-    <HeroSlideshow client:load />
-    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-charcoal/40 to-charcoal/20"></div>
+  <!-- Hero — Full-bleed video, minimal text -->
+  <section class="relative h-screen flex items-end pb-20 md:pb-28 overflow-hidden">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+      <source src="/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/30 to-dark/10"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
-      <div class="max-w-5xl">
-        <FadeIn client:load delay={0.2} direction="none">
-          <p class="font-body text-[11px] md:text-xs tracking-[0.3em] text-brass uppercase mb-6 md:mb-8">
-            Geelong & Greater Region
-          </p>
-        </FadeIn>
-
-        <div class="mb-8 md:mb-10">
-          <TextReveal client:load delay={0.4}>
-            <h1 class="font-heading text-[3.5rem] md:text-[6rem] lg:text-[8rem] text-warm-white leading-[0.95] tracking-tight">
-              Building with
-            </h1>
-          </TextReveal>
-          <TextReveal client:load delay={0.6}>
-            <h1 class="font-heading text-[3.5rem] md:text-[6rem] lg:text-[8rem] text-warm-white leading-[0.95] tracking-tight italic">
-              purpose & pride
-            </h1>
-          </TextReveal>
+      <FadeIn client:load delay={0.3}>
+        <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-6">
+          Geelong & Greater Region
+        </p>
+      </FadeIn>
+      <FadeIn client:load delay={0.5}>
+        <h1 class="font-heading text-[2.75rem] md:text-[5rem] lg:text-[6.5rem] text-parchment leading-[0.95] tracking-tight max-w-4xl">
+          Building with<br /><em>purpose & pride</em>
+        </h1>
+      </FadeIn>
+      <FadeIn client:load delay={0.8}>
+        <p class="text-parchment/50 text-base md:text-lg max-w-md mt-8 leading-relaxed">
+          Premium residential construction, extensions, and bespoke outdoor living.
+        </p>
+      </FadeIn>
+      <FadeIn client:load delay={1.0}>
+        <div class="flex gap-4 mt-10">
+          <a href="/projects" class="px-8 py-3.5 bg-accent text-parchment font-body text-sm tracking-wide rounded-full hover:opacity-90 transition-opacity">
+            View Our Work
+          </a>
+          <a href="/contact" class="px-8 py-3.5 border border-parchment/20 text-parchment font-body text-sm tracking-wide rounded-full hover:border-accent hover:text-accent transition-colors">
+            Start a Project
+          </a>
         </div>
-
-        <FadeIn client:load delay={1.0} direction="up">
-          <div class="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
-            <p class="text-cream/50 text-base md:text-lg max-w-md leading-relaxed">
-              Premium residential construction, extensions, and bespoke outdoor living. Craftsmanship that speaks for itself.
-            </p>
-            <div class="flex gap-4">
-              <a href="/projects" class="px-8 py-3.5 bg-brass text-warm-white font-body text-sm tracking-wide rounded-full hover:bg-brass-light transition-colors duration-300">
-                View Our Work
-              </a>
-              <a href="/contact" class="px-8 py-3.5 border border-cream/25 text-cream font-body text-sm tracking-wide rounded-full hover:border-brass hover:text-brass transition-colors duration-300">
-                Get a Quote
-              </a>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </div>
-
-    <div class="absolute bottom-8 right-8 md:right-12">
-      <div class="flex flex-col items-center gap-3 animate-bounce">
-        <span class="font-body text-[10px] tracking-[0.2em] text-cream/30 uppercase" style="writing-mode: vertical-lr;">Scroll</span>
-        <div class="w-px h-12 bg-gradient-to-b from-brass/40 to-transparent"></div>
-      </div>
+      </FadeIn>
     </div>
   </section>
 
-  <!-- Stats Bar -->
-  <section class="py-12 md:py-16 bg-charcoal border-t border-cream/5">
+  <!-- Selected Projects — Large, image-dominant, asymmetric -->
+  <section class="py-24 md:py-40 bg-parchment">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-        {[
-          { value: 20, suffix: '+', label: 'Years Experience' },
-          { value: 150, suffix: '+', label: 'Projects Completed' },
-          { value: 100, suffix: '%', label: 'Owner Managed', highlight: true },
-          { value: 5, suffix: '', label: 'Star Reviews' },
-        ].map((stat, i) => (
-          <FadeIn client:load delay={i * 0.1} direction="up">
-            <div class="text-center">
-              <div class={`font-heading text-4xl md:text-5xl mb-2 ${stat.highlight ? 'text-brass' : 'text-cream'}`}>
-                <AnimatedCounter client:load value={stat.value} suffix={stat.suffix} />
-              </div>
-              <p class="font-body text-[11px] tracking-[0.2em] text-cream/30 uppercase">{stat.label}</p>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Services — Bento grid -->
-  <section class="py-24 md:py-36 gradient-warm noise-overlay">
-    <div class="relative z-10 max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16 md:mb-20">
-        <div class="lg:col-span-5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mb-20">
+        <div class="lg:col-span-7">
           <FadeIn client:load>
-            <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">What We Do</p>
-            <h2 class="font-heading text-4xl md:text-6xl text-charcoal tracking-tight mb-6">
-              Crafted for how<br />you want to live
+            <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">Selected Work</p>
+            <h2 class="font-heading text-4xl md:text-6xl text-dark tracking-tight">
+              Projects that speak<br />for themselves
             </h2>
           </FadeIn>
         </div>
-        <div class="lg:col-span-5 lg:col-start-8 flex items-end">
-          <FadeIn client:load delay={0.2}>
-            <p class="text-text-secondary text-base md:text-lg leading-relaxed">
-              Every project is approached with the same standard of precision, from the first conversation through to handover.
-            </p>
+        <div class="lg:col-span-4 lg:col-start-9 flex items-end">
+          <FadeIn client:load delay={0.15}>
+            <a href="/projects" class="text-muted font-body text-sm hover:text-accent transition-colors flex items-center gap-2">
+              View all projects <span>&rarr;</span>
+            </a>
           </FadeIn>
         </div>
       </div>
 
-      <StaggerChildren client:load className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5" staggerDelay={0.12}>
-        {services.map((service, i) => (
-          <StaggerItem client:load>
-            <a href={`/projects`} class={`group block p-8 md:p-10 rounded-2xl transition-all duration-500 ${
-              i % 2 === 0 ? 'bg-charcoal text-cream hover:bg-ink' : 'bg-stone-light text-charcoal hover:bg-stone'
-            }`}>
-              <span class={`font-heading text-5xl md:text-6xl block mb-8 ${i % 2 === 0 ? 'text-brass/30' : 'text-brass/20'}`}>0{i + 1}</span>
-              <h3 class={`font-body text-xs font-medium tracking-[0.15em] uppercase mb-3 ${i % 2 === 0 ? 'text-brass' : 'text-brass-muted'}`}>
-                {service.title}
-              </h3>
-              <p class={`text-sm leading-relaxed ${i % 2 === 0 ? 'text-cream/60' : 'text-text-secondary'}`}>
-                {service.description}
-              </p>
-              <div class={`mt-6 flex items-center gap-2 font-body text-xs tracking-wide ${
-                i % 2 === 0 ? 'text-cream/40 group-hover:text-brass' : 'text-text-muted group-hover:text-brass'
-              } transition-colors`}>
-                View projects <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-              </div>
-            </a>
-          </StaggerItem>
-        ))}
-      </StaggerChildren>
-    </div>
-  </section>
-
-  <!-- Craft Detail Strip -->
-  <section class="py-20 md:py-28 bg-warm-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 mb-10">
-      <FadeIn client:load>
-        <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">The Details</p>
-        <h2 class="font-heading text-3xl md:text-5xl text-charcoal tracking-tight">Where craft meets precision</h2>
-      </FadeIn>
-    </div>
-    <HorizontalScroll client:load images={[
-      { src: '/images/projects/custom-details/bathroom-timber-vanity-herringbone-01.jpg', alt: 'Timber vanity with herringbone tile' },
-      { src: '/images/projects/custom-details/glass-staircase-timber-treads-01.jpg', alt: 'Glass balustrade staircase' },
-      { src: '/images/projects/custom-details/grand-entry-double-doors-01.jpg', alt: 'Grand entry doors' },
-      { src: '/images/projects/custom-details/timber-batten-room-divider-01.jpg', alt: 'Timber batten divider' },
-      { src: '/images/projects/custom-details/geometric-timber-art-01.jpg', alt: 'Geometric timber art' },
-      { src: '/images/projects/custom-details/timber-sliding-door-detail-01.jpg', alt: 'Timber sliding door detail' },
-    ]} />
-  </section>
-
-  <!-- Featured Projects -->
-  <section class="py-24 md:py-36 gradient-dark noise-overlay">
-    <div class="relative z-10 max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+      <!-- Project 1 — Full width hero -->
+      {featured[0] && (
         <FadeIn client:load>
-          <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">Our Work</p>
-          <h2 class="font-heading text-4xl md:text-6xl text-cream tracking-tight">Featured Projects</h2>
-        </FadeIn>
-        <FadeIn client:load delay={0.2}>
-          <a href="/projects" class="text-cream/40 font-body text-sm hover:text-brass transition-colors mt-6 md:mt-0 flex items-center gap-2">
-            View all projects <span>&rarr;</span>
+          <a href={`/projects/${featured[0].id}`} class="group block mb-8">
+            <div class="relative aspect-[16/9] overflow-hidden">
+              <img
+                src={featured[0].images[0]}
+                alt={featured[0].title}
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+            <div class="mt-5 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+              <h3 class="font-heading text-2xl md:text-3xl text-dark tracking-tight">{featured[0].title}</h3>
+              <p class="text-muted text-sm">{featured[0].category} — {featured[0].location}</p>
+            </div>
           </a>
         </FadeIn>
+      )}
+
+      <!-- Projects 2 & 3 — Asymmetric 7/5 grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
+        {featured[1] && (
+          <div class="md:col-span-7">
+            <FadeIn client:load delay={0.1}>
+              <a href={`/projects/${featured[1].id}`} class="group block">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={featured[1].images[0]}
+                    alt={featured[1].title}
+                    loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div class="mt-5 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <h3 class="font-heading text-xl md:text-2xl text-dark tracking-tight">{featured[1].title}</h3>
+                  <p class="text-muted text-sm">{featured[1].location}</p>
+                </div>
+              </a>
+            </FadeIn>
+          </div>
+        )}
+        {featured[2] && (
+          <div class="md:col-span-5">
+            <FadeIn client:load delay={0.2}>
+              <a href={`/projects/${featured[2].id}`} class="group block">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={featured[2].images[0]}
+                    alt={featured[2].title}
+                    loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div class="mt-5 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <h3 class="font-heading text-xl md:text-2xl text-dark tracking-tight">{featured[2].title}</h3>
+                  <p class="text-muted text-sm">{featured[2].location}</p>
+                </div>
+              </a>
+            </FadeIn>
+          </div>
+        )}
       </div>
-      <FadeIn client:load delay={0.2}>
-        <ProjectGrid client:load featuredOnly={true} />
-      </FadeIn>
+
+      <!-- Project 4 — if exists -->
+      {featured[3] && (
+        <FadeIn client:load delay={0.1}>
+          <a href={`/projects/${featured[3].id}`} class="group block">
+            <div class="relative aspect-[21/9] overflow-hidden">
+              <img
+                src={featured[3].images[0]}
+                alt={featured[3].title}
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+            <div class="mt-5 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+              <h3 class="font-heading text-2xl md:text-3xl text-dark tracking-tight">{featured[3].title}</h3>
+              <p class="text-muted text-sm">{featured[3].category} — {featured[3].location}</p>
+            </div>
+          </a>
+        </FadeIn>
+      )}
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="py-24 md:py-36 bg-stone-light noise-overlay">
-    <div class="relative z-10 max-w-7xl mx-auto px-6">
+  <!-- Philosophy — Brief, asymmetric -->
+  <section class="py-24 md:py-40 bg-dark">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div class="lg:col-span-5">
+          <FadeIn client:load>
+            <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">About</p>
+            <h2 class="font-heading text-4xl md:text-5xl text-parchment tracking-tight">
+              Owner-managed,<br />start to finish
+            </h2>
+          </FadeIn>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7 flex items-center">
+          <FadeIn client:load delay={0.15}>
+            <div>
+              <p class="text-parchment/60 text-lg leading-relaxed mb-8">
+                Every Captain Construction project is personally managed by Cal. No project managers in between, no miscommunication, no compromises. Twenty years of building homes across Geelong and the greater region — the same standard of precision on every job.
+              </p>
+              <a href="/about" class="text-accent font-body text-sm hover:opacity-80 transition-opacity flex items-center gap-2">
+                More about us <span>&rarr;</span>
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial — Single, powerful -->
+  <section class="py-24 md:py-40 bg-stone">
+    <div class="max-w-4xl mx-auto px-6 text-center">
       <FadeIn client:load>
-        <div class="text-center mb-4">
-          <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">Testimonials</p>
-          <h2 class="font-heading text-3xl md:text-6xl text-charcoal tracking-tight mb-12">What our clients say</h2>
+        <p class="font-heading text-6xl md:text-7xl text-accent/30 leading-none mb-8">&ldquo;</p>
+        <blockquote class="font-heading text-2xl md:text-3xl lg:text-4xl text-dark leading-snug tracking-tight mb-10">
+          {testimonial.quote}
+        </blockquote>
+        <div>
+          <p class="font-body text-[11px] font-medium tracking-[0.15em] text-accent uppercase">
+            {testimonial.author}
+          </p>
+          <p class="text-muted text-sm mt-1">
+            {testimonial.location} — {testimonial.project}
+          </p>
         </div>
       </FadeIn>
-      <FadeIn client:load delay={0.2}>
-        <TestimonialCarousel client:load variant="light" />
-      </FadeIn>
     </div>
   </section>
 
-  <!-- Process Teaser — Asymmetric with parallax -->
-  <section class="py-24 md:py-36 bg-warm-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <FadeIn client:load direction="left">
-          <div class="relative">
-            <ParallaxImage client:load src="/images/projects/process/framing-progress-01.jpg" alt="Construction framing in progress" className="aspect-[4/5] rounded-2xl" />
-            <div class="absolute -bottom-6 -right-6 bg-brass text-warm-white p-6 md:p-8 rounded-2xl shadow-lg">
-              <p class="font-heading text-3xl md:text-4xl leading-none">5</p>
-              <p class="font-body text-[11px] tracking-[0.15em] uppercase mt-1">Step Process</p>
-            </div>
-          </div>
-        </FadeIn>
-        <FadeIn client:load direction="right" delay={0.2}>
-          <div>
-            <p class="font-body text-[11px] tracking-[0.3em] text-brass uppercase mb-4">How We Work</p>
-            <h2 class="font-heading text-4xl md:text-5xl text-charcoal tracking-tight mb-6">From vision to reality</h2>
-            <p class="text-text-secondary text-base md:text-lg leading-relaxed mb-8">
-              Every great build starts with a conversation. Our five-step process is designed to make your building experience transparent, stress-free, and exactly what you envisioned.
-            </p>
-            <a href="/process" class="inline-flex items-center gap-3 px-8 py-3.5 bg-charcoal text-cream font-body text-sm rounded-full hover:bg-brass transition-colors duration-300">
-              Our Process <span>&rarr;</span>
-            </a>
-          </div>
-        </FadeIn>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Banner -->
-  <section class="py-28 md:py-40 gradient-dark noise-overlay relative overflow-hidden">
-    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+  <!-- CTA — Clean, confident -->
+  <section class="py-28 md:py-44 bg-dark">
+    <div class="max-w-4xl mx-auto px-6 text-center">
       <FadeIn client:load>
-        <h2 class="font-heading text-4xl md:text-7xl lg:text-8xl text-cream tracking-tight mb-8">
-          Ready to build<br /><span class="italic text-brass">something great?</span>
+        <h2 class="font-heading text-4xl md:text-6xl lg:text-7xl text-parchment tracking-tight mb-8">
+          Ready to build?
         </h2>
-        <p class="text-cream/40 text-base md:text-lg mb-12 max-w-xl mx-auto">
-          Whether it's a new home, an extension, or the deck you've always wanted — let's talk about making it happen.
+        <p class="text-parchment/40 text-base md:text-lg mb-12 max-w-xl mx-auto">
+          Whether it's a new home, extension, or outdoor space — let's talk about making it happen.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="px-10 py-4 bg-brass text-warm-white font-body text-sm tracking-wide rounded-full hover:bg-brass-light transition-colors duration-300">
+          <a href="/contact" class="px-10 py-4 bg-accent text-parchment font-body text-sm tracking-wide rounded-full hover:opacity-90 transition-opacity">
             Start Your Project
           </a>
-          <a href="tel:0419400734" class="px-10 py-4 border border-cream/15 text-cream font-body text-sm tracking-wide rounded-full hover:border-brass hover:text-brass transition-colors duration-300">
+          <a href="tel:0419400734" class="px-10 py-4 border border-parchment/15 text-parchment font-body text-sm tracking-wide rounded-full hover:border-accent hover:text-accent transition-colors">
             Call 0419 400 734
           </a>
         </div>

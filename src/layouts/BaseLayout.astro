@@ -21,85 +21,64 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Captain Construction Co.</title>
   </head>
-  <body class="bg-warm-white text-text-primary">
+  <body class="bg-parchment text-dark">
     <Navigation currentPath={currentPath} variant={navVariant} client:load />
 
     <main>
       <slot />
     </main>
 
-    <!-- Footer — Minimal, confident -->
-    <footer class="bg-ink">
-      <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-8">
+    <!-- Footer -->
+    <footer class="bg-dark">
+      <div class="max-w-7xl mx-auto px-6 pt-20 pb-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
           <!-- Brand -->
-          <div class="md:col-span-4">
+          <div class="md:col-span-5">
             <a href="/" class="inline-flex items-center gap-3 mb-6">
               <img src="/logo-icon-light.svg" alt="" class="h-10 w-auto" />
               <div class="flex flex-col">
-                <span class="font-heading text-xl tracking-tight text-cream leading-tight">Captain</span>
-                <span class="font-body text-[9px] tracking-[0.2em] text-cream/40 uppercase leading-tight">Construction Co.</span>
+                <span class="font-heading text-xl tracking-tight text-parchment leading-tight">Captain</span>
+                <span class="font-body text-[9px] tracking-[0.2em] text-parchment/30 uppercase leading-tight">Construction Co.</span>
               </div>
             </a>
-            <p class="text-cream/35 text-sm leading-relaxed max-w-xs">
+            <p class="text-parchment/35 text-sm leading-relaxed max-w-xs">
               Premium residential construction in Geelong and the greater region. Built with precision, finished with pride.
             </p>
           </div>
 
           <!-- Navigation -->
-          <div class="md:col-span-2 md:col-start-6">
-            <h4 class="font-body text-[11px] tracking-[0.2em] text-cream/25 uppercase mb-6">Navigate</h4>
+          <div class="md:col-span-2 md:col-start-7">
+            <h4 class="font-body text-[11px] tracking-[0.2em] text-parchment/20 uppercase mb-6">Navigate</h4>
             <ul class="space-y-3">
-              <li><a href="/" class="text-cream/50 hover:text-cream transition-colors text-sm">Home</a></li>
-              <li><a href="/projects" class="text-cream/50 hover:text-cream transition-colors text-sm">Projects</a></li>
-              <li><a href="/about" class="text-cream/50 hover:text-cream transition-colors text-sm">About</a></li>
-              <li><a href="/process" class="text-cream/50 hover:text-cream transition-colors text-sm">Our Process</a></li>
-              <li><a href="/contact" class="text-cream/50 hover:text-cream transition-colors text-sm">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Services -->
-          <div class="md:col-span-3">
-            <h4 class="font-body text-[11px] tracking-[0.2em] text-cream/25 uppercase mb-6">Services</h4>
-            <ul class="space-y-3">
-              <li><span class="text-cream/50 text-sm">New Home Builds</span></li>
-              <li><span class="text-cream/50 text-sm">Extensions & Additions</span></li>
-              <li><span class="text-cream/50 text-sm">Decking & Outdoor Living</span></li>
-              <li><span class="text-cream/50 text-sm">Custom Details & Joinery</span></li>
+              <li><a href="/" class="text-parchment/40 hover:text-parchment transition-colors text-sm">Home</a></li>
+              <li><a href="/projects" class="text-parchment/40 hover:text-parchment transition-colors text-sm">Projects</a></li>
+              <li><a href="/about" class="text-parchment/40 hover:text-parchment transition-colors text-sm">About</a></li>
+              <li><a href="/process" class="text-parchment/40 hover:text-parchment transition-colors text-sm">Our Process</a></li>
+              <li><a href="/contact" class="text-parchment/40 hover:text-parchment transition-colors text-sm">Contact</a></li>
             </ul>
           </div>
 
           <!-- Contact -->
           <div class="md:col-span-3">
-            <h4 class="font-body text-[11px] tracking-[0.2em] text-cream/25 uppercase mb-6">Contact</h4>
+            <h4 class="font-body text-[11px] tracking-[0.2em] text-parchment/20 uppercase mb-6">Contact</h4>
             <ul class="space-y-3">
-              <li><a href="tel:0419400734" class="text-cream/50 hover:text-cream transition-colors text-sm">0419 400 734</a></li>
-              <li><span class="text-cream/50 text-sm">Geelong & Greater Region</span></li>
-              <li><span class="text-cream/50 text-sm">Victoria, Australia</span></li>
+              <li><a href="tel:0419400734" class="text-parchment/40 hover:text-parchment transition-colors text-sm">0419 400 734</a></li>
+              <li><span class="text-parchment/40 text-sm">Geelong & Greater Region</span></li>
+              <li><span class="text-parchment/40 text-sm">Victoria, Australia</span></li>
             </ul>
           </div>
         </div>
 
         <!-- Bottom Bar -->
-        <div class="border-t border-cream/8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-cream/20 text-xs">
-            &copy; {new Date().getFullYear()} Captain Construction Co. All rights reserved.
+        <div class="border-t border-parchment/8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-parchment/20 text-xs">
+            &copy; {new Date().getFullYear()} Captain Construction Co.
           </p>
-          <p class="text-cream/20 text-xs">
+          <p class="text-parchment/20 text-xs">
             Registered Builder — Victoria, Australia
           </p>
         </div>
       </div>
     </footer>
-
-    <!-- Mobile Sticky CTA -->
-    <div class="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-charcoal/95 backdrop-blur-md border-t border-cream/10 p-3 flex gap-3">
-      <a href="tel:0419400734" class="flex-1 py-3 text-center text-cream font-body text-sm border border-cream/20 rounded-full">
-        Call Cal
-      </a>
-      <a href="/contact" class="flex-1 py-3 text-center text-warm-white font-body text-sm bg-brass rounded-full">
-        Get a Quote
-      </a>
-    </div>
   </body>
 </html>
