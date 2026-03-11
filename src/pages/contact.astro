@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FadeIn from '../components/FadeIn';
+import ContactForm from '../components/ContactForm';
+---
+
+<BaseLayout title="Contact" description="Get in touch with Captain Construction Co. for a free consultation on your building project in Geelong and the greater region." navVariant="dark">
+  <!-- Hero -->
+  <section class="bg-charcoal pt-32 pb-20 md:pt-40 md:pb-28">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <FadeIn client:load>
+        <p class="font-heading text-xs tracking-[0.4em] text-brass uppercase mb-4">Get In Touch</p>
+        <h1 class="font-heading text-4xl md:text-6xl tracking-[0.05em] text-cream font-light mb-6">
+          Contact Us
+        </h1>
+        <p class="text-cream/50 text-lg max-w-2xl mx-auto">
+          Ready to start your project? Have questions? Drop us a line or give Cal a call.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="py-24 md:py-32 bg-warm-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <FadeIn client:load direction="left">
+            <h2 class="font-heading text-2xl tracking-[0.1em] text-charcoal uppercase mb-8">
+              Send Us a Message
+            </h2>
+            <ContactForm client:load />
+          </FadeIn>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="lg:col-span-2">
+          <FadeIn client:load direction="right" delay={0.2}>
+            <div class="space-y-10">
+              <!-- Phone -->
+              <div>
+                <h3 class="font-heading text-xs tracking-[0.25em] text-brass uppercase mb-4">Call Us</h3>
+                <a
+                  href="tel:0419400734"
+                  class="text-2xl text-charcoal font-heading tracking-[0.1em] hover:text-brass transition-colors"
+                >
+                  0419 400 734
+                </a>
+                <p class="text-text-muted text-sm mt-2">Monday – Friday, 7am – 5pm</p>
+              </div>
+
+              <!-- Location -->
+              <div>
+                <h3 class="font-heading text-xs tracking-[0.25em] text-brass uppercase mb-4">Location</h3>
+                <p class="text-text-secondary leading-relaxed">
+                  Geelong & Greater Region<br />
+                  Victoria, Australia
+                </p>
+              </div>
+
+              <!-- Service Areas -->
+              <div>
+                <h3 class="font-heading text-xs tracking-[0.25em] text-brass uppercase mb-4">Service Areas</h3>
+                <ul class="space-y-2">
+                  {['Geelong', 'Bellarine Peninsula', 'Surf Coast', 'Golden Plains', 'Greater Region'].map((area) => (
+                    <li class="text-text-secondary text-sm flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 bg-brass rounded-full flex-shrink-0"></span>
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Quick Response -->
+              <div class="p-8 bg-stone-light border border-border">
+                <h3 class="font-heading text-xs tracking-[0.25em] text-brass uppercase mb-4">Quick Response</h3>
+                <p class="text-text-secondary text-sm leading-relaxed">
+                  We aim to respond to all enquiries within 24 hours. For urgent matters, give us a call directly.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

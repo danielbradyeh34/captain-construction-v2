@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation';
+
+interface Props {
+  title: string;
+  description?: string;
+  navVariant?: 'light' | 'dark';
+}
+
+const { title, description = "Captain Construction Co. — Premium builder in Geelong & Greater Region, Victoria. New builds, extensions, decking & custom craftsmanship.", navVariant = 'light' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Captain Construction Co.</title>
+  </head>
+  <body class="bg-warm-white text-text-primary">
+    <Navigation currentPath={currentPath} variant={navVariant} client:load />
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal">
+      <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
+          <!-- Brand -->
+          <div class="md:col-span-4">
+            <a href="/" class="inline-flex items-center gap-3 mb-6">
+              <img
+                src="/logo-icon-light.svg"
+                alt=""
+                class="h-10 w-auto"
+              />
+              <div class="flex flex-col">
+                <span class="font-heading text-base tracking-[0.25em] text-cream uppercase leading-tight">Captain</span>
+                <span class="font-heading text-[9px] tracking-[0.3em] text-cream/50 uppercase leading-tight">Construction Co.</span>
+              </div>
+            </a>
+            <p class="text-cream/50 text-sm leading-relaxed max-w-xs">
+              Premium residential construction in Geelong and the greater region. Built with precision, finished with pride.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="md:col-span-2 md:col-start-6">
+            <h4 class="font-heading text-xs tracking-[0.25em] text-cream/30 uppercase mb-6">Navigate</h4>
+            <ul class="space-y-3">
+              <li><a href="/" class="text-cream/60 hover:text-cream transition-colors text-sm">Home</a></li>
+              <li><a href="/projects" class="text-cream/60 hover:text-cream transition-colors text-sm">Projects</a></li>
+              <li><a href="/about" class="text-cream/60 hover:text-cream transition-colors text-sm">About</a></li>
+              <li><a href="/process" class="text-cream/60 hover:text-cream transition-colors text-sm">Our Process</a></li>
+              <li><a href="/contact" class="text-cream/60 hover:text-cream transition-colors text-sm">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div class="md:col-span-3">
+            <h4 class="font-heading text-xs tracking-[0.25em] text-cream/30 uppercase mb-6">Services</h4>
+            <ul class="space-y-3">
+              <li><span class="text-cream/60 text-sm">New Home Builds</span></li>
+              <li><span class="text-cream/60 text-sm">Extensions & Additions</span></li>
+              <li><span class="text-cream/60 text-sm">Decking & Outdoor Living</span></li>
+              <li><span class="text-cream/60 text-sm">Custom Details & Joinery</span></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="md:col-span-3">
+            <h4 class="font-heading text-xs tracking-[0.25em] text-cream/30 uppercase mb-6">Contact</h4>
+            <ul class="space-y-3">
+              <li>
+                <a href="tel:0419400734" class="text-cream/60 hover:text-cream transition-colors text-sm">
+                  0419 400 734
+                </a>
+              </li>
+              <li><span class="text-cream/60 text-sm">Geelong & Greater Region</span></li>
+              <li><span class="text-cream/60 text-sm">Victoria, Australia</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-cream/30 text-xs">
+            &copy; {new Date().getFullYear()} Captain Construction Co. All rights reserved.
+          </p>
+          <p class="text-cream/30 text-xs">
+            Registered Builder — Victoria, Australia
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

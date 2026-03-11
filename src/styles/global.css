@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Primary palette — warm, natural, editorial */
+  --color-sage: #A8A48C;
+  --color-sage-light: #C2BFA8;
+  --color-sage-muted: #B8B4A0;
+  --color-stone: #D4CFC4;
+  --color-stone-light: #E8E4DB;
+  --color-cream: #F5F2EC;
+  --color-warm-white: #FAF9F6;
+
+  /* Dark tones — used sparingly */
+  --color-charcoal: #2D2D2D;
+  --color-graphite: #3A3A3A;
+  --color-ink: #1A1A1A;
+
+  /* Accent — warm brass */
+  --color-brass: #B8975A;
+  --color-brass-light: #CBAB72;
+  --color-brass-muted: #A68849;
+
+  /* Text hierarchy */
+  --color-text-primary: #2D2D2D;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: #999999;
+  --color-text-light: #F5F2EC;
+
+  /* Borders */
+  --color-border: #E0DDD6;
+  --color-border-dark: #3A3A3A;
+
+  /* Typography */
+  --font-heading: 'Josefin Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-warm-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+::selection {
+  background-color: var(--color-sage);
+  color: white;
+}

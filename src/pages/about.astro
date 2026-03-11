@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FadeIn from '../components/FadeIn';
+---
+
+<BaseLayout title="About" description="Learn about Captain Construction Co. — Geelong's premium residential builder specialising in new builds, extensions, and bespoke timber craftsmanship." navVariant="dark">
+  <!-- Hero -->
+  <section class="bg-charcoal pt-32 pb-20 md:pt-40 md:pb-28">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <FadeIn client:load>
+        <p class="font-heading text-xs tracking-[0.4em] text-brass uppercase mb-4">About Us</p>
+        <h1 class="font-heading text-4xl md:text-6xl tracking-[0.05em] text-cream font-light mb-6">
+          Captain Construction Co.
+        </h1>
+        <p class="text-cream/50 text-lg max-w-2xl mx-auto">
+          Geelong born. Quality driven. Built on a reputation of craftsmanship and trust.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-24 md:py-32 bg-warm-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <FadeIn client:load direction="left">
+          <div>
+            <p class="font-heading text-xs tracking-[0.4em] text-brass uppercase mb-4">Our Story</p>
+            <h2 class="font-heading text-3xl tracking-[0.05em] text-charcoal font-light mb-8">Why Captain?</h2>
+            <div class="space-y-6 text-text-secondary leading-relaxed">
+              <p>
+                Captain Construction Co. was founded with a simple belief: every home deserves to be built by someone who genuinely cares about the outcome. Not just getting the job done — but getting it right.
+              </p>
+              <p>
+                Based in Geelong, we're a fully licensed builder specialising in residential construction that demands attention to detail. From ground-up new builds to extensions that transform how families live, we approach every project with the same standard of precision and pride.
+              </p>
+              <p>
+                The anchor in our name isn't just a nod to Geelong's maritime heritage — it represents stability, strength, and a foundation you can rely on. That's what we build.
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+
+        <FadeIn client:load direction="right" delay={0.2}>
+          <div class="space-y-6">
+            <div class="p-8 md:p-10 bg-stone-light border border-border">
+              <h3 class="font-heading text-sm tracking-[0.2em] text-brass uppercase mb-3">What Sets Us Apart</h3>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                We're not a volume builder. We take on a limited number of projects at any given time so that every build gets the focus it deserves. That means direct communication with Cal, not a project manager you've never met.
+              </p>
+            </div>
+            <div class="p-8 md:p-10 bg-stone-light border border-border">
+              <h3 class="font-heading text-sm tracking-[0.2em] text-brass uppercase mb-3">Timber Craftsmanship</h3>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                Our signature is in the details — natural timber cladding, hardwood decking, bespoke joinery, and finishing touches that elevate a build from good to exceptional. It's the work most people don't notice until they see it done properly.
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="py-24 md:py-32 bg-charcoal">
+    <div class="max-w-7xl mx-auto px-6">
+      <FadeIn client:load>
+        <div class="text-center mb-16">
+          <p class="font-heading text-xs tracking-[0.4em] text-brass uppercase mb-4">Where We Build</p>
+          <h2 class="font-heading text-3xl md:text-5xl tracking-[0.05em] text-cream font-light">Service Areas</h2>
+        </div>
+      </FadeIn>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+        {['Geelong', 'Bellarine Peninsula', 'Surf Coast', 'Golden Plains', 'Barwon Heads', 'Ocean Grove', 'Torquay', 'Greater Region'].map((area, i) => (
+          <FadeIn client:load delay={i * 0.08} direction="up">
+            <div class="text-center p-4">
+              <p class="font-heading text-sm tracking-[0.15em] text-cream/80 uppercase">{area}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-24 md:py-32 bg-stone-light">
+    <div class="max-w-5xl mx-auto px-6">
+      <FadeIn client:load>
+        <div class="text-center mb-16">
+          <p class="font-heading text-xs tracking-[0.4em] text-brass uppercase mb-4">Our Values</p>
+          <h2 class="font-heading text-3xl md:text-5xl tracking-[0.05em] text-charcoal font-light">How We Work</h2>
+        </div>
+      </FadeIn>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <FadeIn client:load delay={0}>
+          <div class="text-center p-8 bg-warm-white border border-border">
+            <span class="font-heading text-3xl text-brass/30 block mb-4">01</span>
+            <h3 class="font-heading text-sm tracking-[0.2em] uppercase mb-4 text-charcoal">Quality First</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              We don't cut corners. Every material is selected for durability and every joint is built to last. Your home is an investment — we treat it that way.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.1}>
+          <div class="text-center p-8 bg-warm-white border border-border">
+            <span class="font-heading text-3xl text-brass/30 block mb-4">02</span>
+            <h3 class="font-heading text-sm tracking-[0.2em] uppercase mb-4 text-charcoal">Clear Communication</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              You'll always know where your project stands. Regular updates, honest timelines, and no surprises. Building a home should be exciting, not stressful.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.2}>
+          <div class="text-center p-8 bg-warm-white border border-border">
+            <span class="font-heading text-3xl text-brass/30 block mb-4">03</span>
+            <h3 class="font-heading text-sm tracking-[0.2em] uppercase mb-4 text-charcoal">Personal Touch</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              You deal directly with Cal — the person who built the business and leads every project. No layers of management between you and the person building your home.
+            </p>
+          </div>
+        </FadeIn>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 md:py-32 bg-charcoal">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <FadeIn client:load>
+        <h2 class="font-heading text-3xl md:text-6xl tracking-[0.05em] text-cream font-light mb-6">
+          Let's Talk About Your Project
+        </h2>
+        <p class="text-cream/50 text-lg mb-10 max-w-xl mx-auto">
+          Ready to build something exceptional? Get in touch for a no-obligation consultation.
+        </p>
+        <a
+          href="/contact"
+          class="inline-block px-10 py-4 bg-brass text-warm-white font-heading text-sm tracking-[0.2em] uppercase hover:bg-brass-light transition-colors duration-300"
+        >
+          Contact Us
+        </a>
+      </FadeIn>
+    </div>
+  </section>
+</BaseLayout>
