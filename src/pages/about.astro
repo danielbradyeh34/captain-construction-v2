@@ -6,7 +6,7 @@ import FadeIn from '../components/FadeIn';
 <BaseLayout title="About" description="Learn about Captain Construction Co. — Geelong's premium residential builder." navVariant="dark">
   <!-- Hero -->
   <section class="relative bg-dark pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-    <img src="/images/heroes/hero-staircase.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+    <img src="/images/heroes/hero-sunset-build.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30" />
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6">
       <div class="max-w-2xl">
@@ -26,14 +26,9 @@ import FadeIn from '../components/FadeIn';
   <!-- Story — Asymmetric layout -->
   <section class="py-24 md:py-36 bg-parchment">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-        <div class="lg:col-span-5">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
           <FadeIn client:load>
-            <img src="/images/projects/new-builds/modern-timber-dark-render-01.jpg" alt="Modern timber build" class="aspect-[3/4] w-full object-cover" />
-          </FadeIn>
-        </div>
-        <div class="lg:col-span-6 lg:col-start-7 lg:pt-16">
-          <FadeIn client:load delay={0.15}>
             <p class="font-body text-[11px] tracking-[0.3em] text-accent uppercase mb-4">Our Story</p>
             <h2 class="font-heading text-4xl md:text-5xl text-dark tracking-tight mb-8">Why Captain?</h2>
             <div class="space-y-6 text-muted leading-relaxed">
@@ -47,6 +42,11 @@ import FadeIn from '../components/FadeIn';
                 The anchor in our name represents stability, strength, and a foundation you can rely on. That's what we build.
               </p>
             </div>
+          </FadeIn>
+        </div>
+        <div>
+          <FadeIn client:load delay={0.15}>
+            <img src="/images/projects/new-builds/glass-staircase-polished-floor-01.jpg" alt="Glass staircase with polished concrete floor" class="aspect-[4/5] w-full object-cover" />
           </FadeIn>
         </div>
       </div>
