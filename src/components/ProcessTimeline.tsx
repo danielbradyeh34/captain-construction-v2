@@ -29,13 +29,7 @@ const steps = [
   },
 ];
 
-interface StepProps {
-  step: typeof steps[0];
-  index: number;
-  variant?: 'light' | 'dark';
-}
-
-function Step({ step, index, variant = 'dark' }: StepProps) {
+function Step({ step, index, variant = 'dark' }: { step: typeof steps[0]; index: number; variant?: 'light' | 'dark' }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const isLight = variant === 'light';
@@ -48,18 +42,16 @@ function Step({ step, index, variant = 'dark' }: StepProps) {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="relative flex items-start gap-8 md:gap-12"
     >
-      {/* Number */}
-      <div className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border ${
-        isLight ? 'border-brass/20' : 'border-brass/30'
+      <div className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl ${
+        isLight ? 'bg-stone-light' : 'bg-cream/5'
       }`}>
-        <span className="font-heading text-2xl md:text-3xl text-brass tracking-wider">
+        <span className="font-heading text-2xl md:text-3xl text-brass tracking-tight">
           {step.number}
         </span>
       </div>
 
-      {/* Content */}
       <div className="flex-1 pb-12 md:pb-16">
-        <h3 className={`font-heading text-lg md:text-xl tracking-[0.15em] uppercase mb-3 ${
+        <h3 className={`font-body text-xs font-medium tracking-[0.15em] uppercase mb-3 ${
           isLight ? 'text-charcoal' : 'text-cream'
         }`}>
           {step.title}
@@ -71,19 +63,14 @@ function Step({ step, index, variant = 'dark' }: StepProps) {
         </p>
       </div>
 
-      {/* Vertical Line */}
       {index < steps.length - 1 && (
-        <div className="absolute left-8 md:left-10 top-20 md:top-24 bottom-0 w-px bg-brass/15" />
+        <div className="absolute left-8 md:left-10 top-20 md:top-24 bottom-0 w-px bg-brass/10" />
       )}
     </motion.div>
   );
 }
 
-interface ProcessTimelineProps {
-  variant?: 'light' | 'dark';
-}
-
-export default function ProcessTimeline({ variant = 'dark' }: ProcessTimelineProps) {
+export default function ProcessTimeline({ variant = 'dark' }: { variant?: 'light' | 'dark' }) {
   return (
     <div className="max-w-3xl mx-auto">
       {steps.map((step, i) => (

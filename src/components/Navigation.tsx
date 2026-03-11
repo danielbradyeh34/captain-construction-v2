@@ -25,11 +25,7 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
@@ -53,12 +49,12 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
             className="h-10 md:h-12 w-auto"
           />
           <div className="flex flex-col">
-            <span className={`font-heading text-base md:text-lg tracking-[0.25em] uppercase leading-tight transition-colors duration-300 ${
+            <span className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-colors duration-300 ${
               showLightLogo ? 'text-cream' : 'text-charcoal'
             }`}>
               Captain
             </span>
-            <span className={`font-heading text-[9px] md:text-[10px] tracking-[0.3em] uppercase leading-tight transition-colors duration-300 ${
+            <span className={`font-body text-[9px] md:text-[10px] tracking-[0.2em] uppercase leading-tight transition-colors duration-300 ${
               showLightLogo ? 'text-cream/50' : 'text-text-secondary'
             }`}>
               Construction Co.
@@ -72,7 +68,7 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
             <a
               key={link.href}
               href={link.href}
-              className={`font-heading text-xs tracking-[0.2em] uppercase transition-colors duration-300 ${
+              className={`font-body text-[13px] tracking-[0.05em] transition-colors duration-300 ${
                 currentPath === link.href
                   ? scrolled ? 'text-charcoal' : isDark ? 'text-warm-white' : 'text-charcoal'
                   : scrolled
@@ -87,12 +83,12 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
           ))}
           <a
             href="/contact"
-            className={`ml-4 px-5 py-2 font-heading text-xs tracking-[0.2em] uppercase transition-all duration-300 border ${
+            className={`ml-4 px-6 py-2.5 font-body text-[13px] tracking-[0.05em] rounded-full transition-all duration-300 ${
               scrolled
-                ? 'border-charcoal text-charcoal hover:bg-charcoal hover:text-warm-white'
+                ? 'bg-charcoal text-warm-white hover:bg-brass'
                 : isDark
-                  ? 'border-warm-white/40 text-warm-white hover:bg-warm-white hover:text-charcoal'
-                  : 'border-charcoal text-charcoal hover:bg-charcoal hover:text-warm-white'
+                  ? 'bg-warm-white/10 backdrop-blur-sm text-warm-white border border-warm-white/20 hover:bg-warm-white hover:text-charcoal'
+                  : 'bg-charcoal text-warm-white hover:bg-brass'
             }`}
           >
             Enquire
@@ -143,10 +139,10 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
                   href={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`font-heading text-2xl tracking-[0.2em] uppercase ${
-                    currentPath === link.href ? 'text-cream' : 'text-cream/50 hover:text-cream'
-                  }`}
+                  transition={{ delay: i * 0.08 }}
+                  className={`font-heading text-4xl tracking-tight ${
+                    currentPath === link.href ? 'text-cream' : 'text-cream/40 hover:text-cream'
+                  } transition-colors`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
@@ -157,10 +153,10 @@ export default function Navigation({ currentPath = '/', variant = 'dark' }: Navi
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="mt-4 px-8 py-3 border border-cream/30 text-cream font-heading text-lg tracking-[0.2em] uppercase hover:bg-cream hover:text-charcoal transition-all"
+                className="mt-4 px-8 py-3 bg-brass text-warm-white font-body text-base rounded-full hover:bg-brass-light transition-all"
                 onClick={() => setIsOpen(false)}
               >
-                Enquire
+                Start a Project
               </motion.a>
               <motion.a
                 href="tel:0419400734"

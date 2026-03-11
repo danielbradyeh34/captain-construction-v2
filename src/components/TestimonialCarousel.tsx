@@ -19,7 +19,7 @@ export default function TestimonialCarousel({ variant = 'dark' }: TestimonialCar
 
   return (
     <div className="relative max-w-3xl mx-auto text-center">
-      <div className={`text-6xl font-heading leading-none mb-6 ${isLight ? 'text-brass' : 'text-brass'}`}>"</div>
+      <div className="text-7xl font-heading leading-none mb-6 text-brass/40">"</div>
       <div className="min-h-[200px] flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -35,7 +35,7 @@ export default function TestimonialCarousel({ variant = 'dark' }: TestimonialCar
               {testimonials[current].quote}
             </p>
             <div>
-              <p className="font-heading text-sm tracking-[0.2em] text-brass uppercase">
+              <p className="font-body text-[11px] font-medium tracking-[0.15em] text-brass uppercase">
                 {testimonials[current].author}
               </p>
               <p className={`text-sm mt-1 ${isLight ? 'text-text-secondary' : 'text-cream/40'}`}>
@@ -46,16 +46,15 @@ export default function TestimonialCarousel({ variant = 'dark' }: TestimonialCar
         </AnimatePresence>
       </div>
 
-      {/* Dots */}
       <div className="flex justify-center gap-3 mt-8">
         {testimonials.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               i === current
                 ? 'bg-brass w-8'
-                : isLight ? 'bg-charcoal/20' : 'bg-cream/20'
+                : isLight ? 'bg-charcoal/15 w-2' : 'bg-cream/15 w-2'
             }`}
             aria-label={`Go to testimonial ${i + 1}`}
           />
