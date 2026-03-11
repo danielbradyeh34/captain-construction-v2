@@ -6,7 +6,7 @@ import FadeIn from '../components/FadeIn';
 <BaseLayout title="About" description="Learn about Captain Construction Co. — Geelong's premium residential builder." navVariant="dark">
   <!-- Hero -->
   <section class="relative bg-dark pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-    <img src="/images/heroes/hero-sunset-build.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+    <img src="/images/heroes/hero-staircase.jpg" alt="" loading="eager" class="absolute inset-0 w-full h-full object-cover opacity-30" />
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6">
       <div class="max-w-2xl">
@@ -46,7 +46,7 @@ import FadeIn from '../components/FadeIn';
         </div>
         <div>
           <FadeIn client:load delay={0.15}>
-            <img src="/images/projects/new-builds/glass-staircase-polished-floor-01.jpg" alt="Glass staircase with polished concrete floor" class="aspect-[4/5] w-full object-cover" />
+            <img src="/images/projects/new-builds/glass-staircase-polished-floor-01.jpg" alt="Glass staircase with polished concrete floor" loading="lazy" class="aspect-[4/5] w-full object-cover" />
           </FadeIn>
         </div>
       </div>
@@ -63,9 +63,9 @@ import FadeIn from '../components/FadeIn';
         </div>
       </FadeIn>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <FadeIn client:load delay={0}>
-          <div class="p-8 md:p-10 bg-dark">
+          <div class="p-8 md:p-10 bg-dark h-full">
             <h3 class="font-body text-xs font-medium tracking-[0.15em] text-accent uppercase mb-4">Not a Volume Builder</h3>
             <p class="text-parchment/60 text-sm leading-relaxed">
               We take on a limited number of projects at any given time so that every build gets the focus it deserves. That means direct communication with Cal, not a project manager you've never met.
@@ -73,10 +73,18 @@ import FadeIn from '../components/FadeIn';
           </div>
         </FadeIn>
         <FadeIn client:load delay={0.1}>
-          <div class="p-8 md:p-10 bg-parchment">
+          <div class="p-8 md:p-10 bg-parchment h-full">
             <h3 class="font-body text-xs font-medium tracking-[0.15em] text-accent uppercase mb-4">Timber Craftsmanship</h3>
             <p class="text-muted text-sm leading-relaxed">
               Natural timber cladding, hardwood decking, bespoke joinery, and finishing touches that elevate a build from good to exceptional. It's the work most people don't notice until they see it done properly.
+            </p>
+          </div>
+        </FadeIn>
+        <FadeIn client:load delay={0.2}>
+          <div class="p-8 md:p-10 bg-dark h-full">
+            <h3 class="font-body text-xs font-medium tracking-[0.15em] text-accent uppercase mb-4">15+ Years Licensed</h3>
+            <p class="text-parchment/60 text-sm leading-relaxed">
+              Fully licensed and insured with over fifteen years of building across Geelong and the greater region. We stand behind every project with a comprehensive structural warranty.
             </p>
           </div>
         </FadeIn>

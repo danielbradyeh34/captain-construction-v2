@@ -20,8 +20,30 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Captain Construction Co.</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} | Captain Construction Co.`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/heroes/hero-sunset-build.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Captain Construction Co.`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/heroes/hero-sunset-build.jpg" />
   </head>
   <body class="bg-parchment text-dark">
+    <!-- Hidden form for Netlify form detection at build time -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <select name="project-type"><option value=""></option></select>
+      <textarea name="message"></textarea>
+    </form>
+
     <Navigation currentPath={currentPath} variant={navVariant} client:load />
 
     <main>
@@ -63,6 +85,7 @@ const currentPath = Astro.url.pathname;
             <h4 class="font-body text-[11px] tracking-[0.2em] text-parchment/20 uppercase mb-6">Contact</h4>
             <ul class="space-y-3">
               <li><a href="tel:0419400734" class="text-parchment/40 hover:text-parchment transition-colors text-sm">0419 400 734</a></li>
+              <li><a href="mailto:calgillespie90@gmail.com" class="text-parchment/40 hover:text-parchment transition-colors text-sm">calgillespie90@gmail.com</a></li>
               <li><span class="text-parchment/40 text-sm">Geelong & Greater Region</span></li>
               <li><span class="text-parchment/40 text-sm">Victoria, Australia</span></li>
             </ul>
